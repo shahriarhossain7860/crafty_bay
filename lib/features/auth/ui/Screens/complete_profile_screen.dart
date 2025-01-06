@@ -55,10 +55,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                 // Call the form builder without wrapping it in a Form widget
                 ElevatedButton(
                   onPressed: () {
-                    // if (_formkey.currentState!.validate()) {
-                    //   // Handle the form submission
-                    // }
-                    Navigator.pushNamed(context, HomeScreen.name);
+                     if (_formkey.currentState!.validate()) {
+                       // Handle the form submission
+                     }
                   },
                   child: Text('Complete'),
                 ),
