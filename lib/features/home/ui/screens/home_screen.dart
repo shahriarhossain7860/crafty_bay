@@ -7,9 +7,12 @@ import '../../../common/ui/widgets/app_bar_icon_button.dart';
 import '../widgets/category_item_widget.dart';
 import '../widgets/home_carousel_slider.dart';
 import '../widgets/home_section_header.dart';
+import '../widgets/product_item_widget.dart';
 import '../widgets/product_search_bar.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String name = '/home-screen';
+
   const HomeScreen({super.key});
 
   @override
@@ -18,92 +21,122 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchBarController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBarMethod(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 16,),
-              ProductSearchBar(
-                controller: _searchBarController,
-              ),
-              const SizedBox(height: 16,),
-              HomeCarouselSlider(),
-              const SizedBox(height: 16,),
-              HomeSectionHeader(
-                title: 'Category',
-                onTap: (){},
-              ),
-              const SizedBox(height: 8,),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: _getCategoryList(),
+        appBar: _buildAppBarMethod(),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 16,
                 ),
-              ),
-              const SizedBox(height: 16,),
-              HomeSectionHeader(
-                title: 'Popular',
-                onTap: (){},
-              ),
-              const SizedBox(height: 8,),
-              SizedBox(
-                width: 120,
-                child: Card(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.themeColor.withOpacity(0.14),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16),
-                            topRight: Radius.circular(16),
-                          ),
-                        ),
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset(AssetsPath.shoesImg, width: 120,),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                              'Nike Shoes latest Edition- RF45770',
-                              maxLines: 1,
-                              style: TextStyle(
-                                overflow: TextOverflow.ellipsis,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black54
-                              ),
-                            ),
-                          ],
-                      )
-                    ],
+                ProductSearchBar(
+                  controller: _searchBarController,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                HomeCarouselSlider(),
+                const SizedBox(
+                  height: 16,
+                ),
+                HomeSectionHeader(
+                  title: 'Category',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getCategoryList(),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8,),
-            ],
+                const SizedBox(
+                  height: 16,
+                ),
+                HomeSectionHeader(
+                  title: 'Popular',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                HomeSectionHeader(
+                  title: 'Special',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                HomeSectionHeader(
+                  title: 'New',
+                  onTap: () {},
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _getProductList(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+              ],
+            ),
           ),
-        ),
-      )
-    );
+        ));
   }
-  List<Widget> _getCategoryList(){
+
+  List<Widget> _getCategoryList() {
     List<Widget> categoryList = [];
-    for(int i=0;i<10;i++){
-      categoryList.add(Padding(
-        padding: const EdgeInsets.only(right: 16),
-        child: const CategoryItemWidget(),
-      ),);
+    for (int i = 0; i < 10; i++) {
+      categoryList.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: const CategoryItemWidget(),
+        ),
+      );
     }
     return categoryList;
+  }
+  List<Widget> _getProductList() {
+    List<Widget> productList = [];
+    for (int i = 0; i < 10; i++) {
+      productList.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: const ProductItemWidget(),
+        ),
+      );
+    }
+    return productList;
   }
 
   AppBar _buildAppBarMethod() {
@@ -112,29 +145,25 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [
         AppbarIconButton(
           icon: Icons.person,
-          onTap: (){},
+          onTap: () {},
         ),
-        const SizedBox(width: 6,),
+        const SizedBox(
+          width: 6,
+        ),
         AppbarIconButton(
           icon: Icons.call,
-          onTap: (){},
+          onTap: () {},
         ),
-        const SizedBox(width: 6,),
+        const SizedBox(
+          width: 6,
+        ),
         AppbarIconButton(
           icon: Icons.notifications_active_outlined,
-          onTap: (){},
+          onTap: () {},
         )
       ],
     );
   }
 }
-
-
-
-
-
-
-
-
 
 
