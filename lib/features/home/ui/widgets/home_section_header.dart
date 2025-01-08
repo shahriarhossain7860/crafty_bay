@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class HomeSectionHeader extends StatelessWidget {
   const HomeSectionHeader({
     super.key, required this.title, required this.onTap,
@@ -12,13 +13,13 @@ class HomeSectionHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Category',
+          title,
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600
           ),
         ),
-        TextButton(onPressed: (){}, child: const Text('View all'))
+        TextButton(onPressed: onTap, child: const Text('View all'))
       ],
     );
   }

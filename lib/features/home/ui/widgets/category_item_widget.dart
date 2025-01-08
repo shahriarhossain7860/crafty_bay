@@ -19,16 +19,15 @@ class CategoryItemWidget extends StatelessWidget {
           child: Icon(
             Icons.computer,
             color: AppColors.themeColor,
-            size: 48,
+            size: 40,
           ),
         ),
         const SizedBox(height: 4,),
         Text(
           'Computer',
           style: TextStyle(
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               fontSize: 16,
-              letterSpacing: 1,
               color: AppColors.themeColor
           ),
         ),
